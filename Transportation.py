@@ -14,33 +14,29 @@ class Transportation(object):
 
 
 class Walk( Transportation ):
-   
-   def __init__( self, start, end, distance, station = 0 ):
-      super.__init__( self, start, end, distance, station = 0)
+
+   def __init__( self, start, end, distance ):
+      Transportation.__init__( self, start, end, distance)
 
    def find_cost( self ):
       return 0
-   
 
-class Taxi(Transportation):
-    def __init__(self, start, end, rate, distance):
-        super().__init__(start, end, distance)
-        self._rate = rate
-        self._distance = distance
-        
-    def find_cost(self):
-        self._cost = self._distance * self._rate
-        return self._cost
-   
-   
-class Train(Transportation):
-   def __init__( self, start, end, distance, station ):
-      Transportation.__init__( start, end, distance)
-      self._station = station * 5
+class Taxi( Transportation ):
 
-   def find_cost(self):
-        self._cost = self._station
-        return self._cost
+   def __init__( self, start, end, distance ):
+      Transportation.__init__( self, start, end, distance)
+
+   def find_cost( self ):
+      return 0
+
+class Train( Transportation ):
+
+   def __init__( self, start, end, distance, station = 0 ):
+      Transportation.__init__( self, start, end, distance, station = 0)
+
+   def find_cost( self ):
+      return 0
+
 
    
 # main program
@@ -54,4 +50,4 @@ trip = [ Walk("KMITL","KMITL SCB Bank",0.6),
 
 for travel in trip:
    travel_cost += travel.find_cost()
-print(travel_cost)
+print (travel_cost)
